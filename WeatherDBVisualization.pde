@@ -58,13 +58,22 @@ void draw() {
   for(int p=0; p<PREFE_NUM; p++){
     float highest=highestTemps[month-1][p];
     float colorProp=510*((highest-min)/(max-min));
-    fill(colorProp,510-colorProp,0);
+    fill(colorProp,510-colorProp,0,128);
     ellipse(xs[p],ys[p],20,20);
+    if(dist(mouseX,mouseY,xs[p],ys[p])<10){
+      ellipse(xs[p],ys[p],50,50);
+      
+      fill(0);
+      textSize(30);
+      textAlign(CENTER,CENTER);
+      text(highest,xs[p],ys[p]);
+    }
   }
   
   //display the text 
   fill(0);
   textSize(20);
+  textAlign(LEFT,CENTER);
   text("(2007."+month+".1) Highest Temperature Heat Map",0,30);
 }
 
